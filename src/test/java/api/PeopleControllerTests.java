@@ -3,6 +3,7 @@ package api;
 import api.controllers.PeopleController;
 import api.models.Person;
 import io.qameta.allure.Description;
+import io.qameta.allure.TmsLink;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -28,6 +29,7 @@ public class PeopleControllerTests extends BaseAPITest {
     @DisplayName("Verify person with ID = 1")
     @Description("Verify person with ID = 1")
     @Tag("API")
+    @TmsLink("HOME-101")
     void verifyPersonById() {
         Person firstPerson = PeopleController.getPersonById(1).verifyRequestStatus(200)
                 .mapResponseToObject(Person.class);
@@ -44,6 +46,7 @@ public class PeopleControllerTests extends BaseAPITest {
     @DisplayName("Verify person's name by provided id")
     @Description("Verify person's name by provided id")
     @Tag("API")
+    @TmsLink("HOME-101")
     void verifyPersonNameById(Integer id, String name) {
         assertThat(PeopleController
                 .getPersonById(id)

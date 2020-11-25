@@ -2,9 +2,9 @@ package ui;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.junit5.BrowserStrategyExtension;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
+import extensions.testlogger.TestLogController;
 import io.qameta.allure.Step;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
@@ -25,7 +25,8 @@ import java.util.Locale;
  * 3 - the one that writes to console detailed result of test - name, status (PASSED, FAILED), time, and exception if FAILED
  */
 
-@ExtendWith(BrowserStrategyExtension.class)
+//@ExtendWith(BrowserStrategyExtension.class)
+@ExtendWith(TestLogController.class)
 public class BaseUITest {
 
     private static final TestProperties PROPS = ConfigFactory.create(TestProperties.class, System.getProperties());
