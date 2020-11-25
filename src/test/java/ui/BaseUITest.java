@@ -21,7 +21,7 @@ import java.util.Locale;
  * <p>
  * Write extensions:
  * 1 - that parses input parameters to parameterized test
- * 2 - the one which decides to not launch tests without annotation @TmsLink
+ * 2 - the one which decides to not launch tests on "stable" env.
  * 3 - the one that writes to console detailed result of test - name, status (PASSED, FAILED), time, and exception if FAILED
  */
 
