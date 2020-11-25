@@ -13,6 +13,7 @@ import ui.models.Contributor;
 import java.util.List;
 import java.util.stream.Stream;
 
+//@ExtendWith(ParameterResolver.class)
 public class AboutPageTests extends BaseUITest {
 
     @Test

@@ -26,7 +26,7 @@ import java.util.Locale;
  */
 
 //@ExtendWith(BrowserStrategyExtension.class)
-@ExtendWith(TestLogController.class)
+//@ExtendWith(TestLogController.class)
 public class BaseUITest {
 
     private static final TestProperties PROPS = ConfigFactory.create(TestProperties.class, System.getProperties());
