@@ -1,0 +1,163 @@
+<html lang="en"><!-- Created by Paul Hallett - http://phalt.co Maintained by Juriy Bura - https://github.com/juriy --><head>
+    <meta charset="utf-8">
+    <title>
+      SWAPI - The Star Wars API
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/custom.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    
+    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script id="twitter-wjs" src="https://platform.twitter.com/widgets.js"></script><script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-163610532-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-163610532-1');
+    </script>
+  <script charset="utf-8" src="https://platform.twitter.com/js/button.63c51c903061d0dbd843c41e8a00aa5a.js"></script></head>
+  <body>
+    <nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="navbar-brand" href="#"><iframe id="twitter-widget-1" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" style="position: static; visibility: visible; width: 61px; height: 20px;" title="Twitter Tweet Button" src="https://platform.twitter.com/widgets/tweet_button.96fd96193cc66c3e11d4c5e4c7c7ec97.en.html#dnt=true&amp;id=twitter-widget-1&amp;lang=en&amp;original_referer=https%3A%2F%2Fswapi.dev%2Fabout&amp;related=juriy&amp;size=m&amp;text=swapi.dev%20-%20the%20Star%20Wars%20API%20&amp;time=1606173202587&amp;type=share&amp;url=https%3A%2F%2Fswapi.co&amp;via=juriy" data-url="https://swapi.co"></iframe>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/documentation">Documentation</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+    <div class="container-fluid" style="margin-top: 60px;">
+      <div class="row center yellow">
+        <div class="jumbotron">
+            <h1>SWAPI</h1>
+            <p class="lead">The Star Wars API</p>
+            <p class="lead"><a href="/about">(what happened to swapi.co?)</a></p>
+        </div>
+      </div>
+        
+<div class="row">
+<div class="col-sm-2 col-lg-2 col-md-2">
+    <h4>Statistics</h4>
+    <p>People: 82</p>
+    <p>Planets: 60</p>
+    <p>Films: 6</p>
+    <p>Species : 37</p>
+    <p>Vehicles: 39</p>
+    <p>Starships: 36</p>
+</div>
+<div class="col-lg-8 col-md-8 col-sm-8">
+
+<h2>What is this?</h2>
+
+<p>The Star Wars API is the world's first quantified and programmatically-formatted set of Star Wars data.</p>
+
+<p>After hours of watching films and trawling through content online, we present to you all the <strong>People, Films, Species, Starships, Vehicles and Planets</strong> from Star Wars.</p>
+
+<p>We've formatted this data in <a href="https://json.org"><strong>JSON</strong></a> and exposed it to you in a <a href="https://en.wikipedia.org/wiki/Representational_state_transfer"><strong>RESTish</strong></a> implementation that allows you to programmatically collect and measure the data.</p>
+
+<p><a href="/documentation">Check out the documentation to get started consuming swapi data</a></p>
+
+<h2>What happened to swapi.co?</h2>
+
+<p>Unfortulately swapi.co is not maintained anymore, and the service is currently down. This is an branch of SWAPI that will be supported going forward.</p>
+
+<h2>What can you use this for?</h2>
+
+<p>Comparing the data from Star Wars has never been easier. Here are some examples using the <a href="/documentation#python">Python helper library</a></p>
+
+<p><em>List the planets in order of size</em>:</p>
+
+<pre><code>import swapi
+for planet in swapi.get_all("planets").order_by("diameter"):
+    print(planet.name)
+</code></pre>
+
+<p><em>View the people who have piloted more than one starship</em>:</p>
+
+<pre><code>import swapi
+for people in swapi.get_all("people").iter():
+    if len(people.starships) &gt; 1:
+        print(people.name)
+</code></pre>
+
+<p><em>Discover if Jar Jar Binks ruined a film just by being in it</em>:</p>
+
+<pre><code>import swapi
+pm = swapi.get_film(4)
+jj = swapi.get_person(36)
+for c in pm.get_characters().iter():
+    if c.name == jj.name:
+        print("Why George, why.")
+</code></pre>
+
+<h2>What are the features?</h2>
+
+<p>We're using <a href="https://djangoproject.com">Django</a> and <a href="https://django-rest-framework.org">Django REST Framework</a> to serve a <a href="https://en.wikipedia.org/wiki/REST">RESTish</a> API to you.
+The data is all formatted in <a href="http://json.org">JSON</a> and we also support <a href="http://jsonschema.net">JSON Schema</a> for programmatically understanding the attributes of each resource.</p>
+
+<p>Seeing the release trailer for Episode VII also made me stupidly enthusiastic for Star Wars again.</p>
+
+<h2>Who are you?</h2>
+
+<p>I am <a href="https://github.com/juriy">Juriy Bura</a>, Solution Architect and author of JavaScript game development book and online React courses.</p>
+
+<h2>Original author?</h2>
+
+<p>This project was originally built and maintained by <a href="http://phalt.co">Paul Hallett</a>.</p>
+
+<h2>Copyright and stuff?</h2>
+
+<p>Star Wars and all associated names are copyright Lucasfilm ltd.</p>
+
+<p>This project is open source and carries a BSD licence.</p>
+
+<p>All data has been freely collected from open sources such as <a href="https://starwars.wikia.com">Wookiepedia</a>.</p>
+
+<h2>Contributors</h2>
+
+<p>SWAPI would not be possible without contributions from the following people:</p>
+
+<ul>
+<li><a href="https://phalt.co">Paul Hallett</a></li>
+<li><a href="https://github.com/Videocard">Owen Hallett</a></li>
+<li><a href="https://github.com/carvilsi">Carvilsi</a></li>
+<li><a href="https://github.com/astagi">Andrea Stagi</a></li>
+<li><a href="https://github.com/juriy">Juriy Bura</a></li>
+</ul>
+
+</div>
+<div class="col-sm-2 col-lg-2 col-md-2">
+</div>
+</div>
+
+    
+    
+  <div class="row">
+        <div class="col-lg-12 footer">
+          Created by Paul Hallett 
+          Maintained by Juriy Bura ©<script type="text/javascript">document.write(new Date().getFullYear());</script>2020 
+          <span class="pull-right">
+            <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="twitter-follow-button twitter-follow-button-rendered" style="position: static; visibility: visible; width: 65px; height: 20px;" title="Twitter Follow Button" src="https://platform.twitter.com/widgets/follow_button.96fd96193cc66c3e11d4c5e4c7c7ec97.en.html#dnt=true&amp;id=twitter-widget-0&amp;lang=en&amp;screen_name=juriy&amp;show_count=false&amp;show_screen_name=false&amp;size=m&amp;time=1606173202586" data-screen-name="juriy"></iframe>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          <iframe src="//ghbtns.com/github-btn.html?user=juriy&amp;type=follow" allowtransparency="false" frameborder="0" scrolling="0" width="132" height="20"></iframe></span><p></p>
+          </div>
+      </div>
+  
+
+</div><iframe scrolling="no" frameborder="0" allowtransparency="true" src="https://platform.twitter.com/widgets/widget_iframe.96fd96193cc66c3e11d4c5e4c7c7ec97.html?origin=https%3A%2F%2Fswapi.dev" title="Twitter settings iframe" style="display: none;"></iframe><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe"></iframe></body></html>
