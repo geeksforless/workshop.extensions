@@ -1,5 +1,5 @@
 For launch please perform
-./gradlew clean build allureReport
+./gradlew clean build allureReport -Denv=qa
 
 Agenda:
 1 - Quick extensions overlook.
