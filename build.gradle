@@ -28,6 +28,7 @@ ext {
     jacksonVersion = '2.11.1'
     fakerVersion = '1.0.2'
     assertJVersion = '3.11.1'
+    slf4j = '2.0.0-alpha1'
 }
 
 dependencies {
@@ -38,13 +39,12 @@ dependencies {
     implementation "io.qameta.allure:allure-rest-assured:$allureLoggerVersion"
     implementation "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
     implementation "org.assertj:assertj-core:$assertJVersion"
-
-
+    implementation "org.junit.jupiter:junit-jupiter-api:$junit5Version"
+    implementation "org.slf4j:slf4j-api:$slf4j"
+    implementation "org.slf4j:slf4j-simple:$slf4j"
+    implementation "org.junit.jupiter:junit-jupiter-engine:$junit5Version"
+    implementation "org.junit.jupiter:junit-jupiter-params:$junit5Version"
     implementation "io.qameta.allure:allure-selenide:$allureLoggerVersion"
-
-    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit5Version"
-    testImplementation "org.junit.jupiter:junit-jupiter-params:$junit5Version"
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit5Version"
 }
 
 tasks.withType(Test) {

@@ -1,6 +1,8 @@
 package ui;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.TmsLink;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -12,6 +14,7 @@ import ui.models.Contributor;
 import java.util.List;
 import java.util.stream.Stream;
 
+//@ExtendWith(ParameterResolver.class)
 public class AboutPageTests extends BaseUITest {
 
     @Test
@@ -36,6 +39,7 @@ public class AboutPageTests extends BaseUITest {
     @DisplayName("Verify amount of test entities on the website")
     @Description("Verify amount of test entities on the website")
     @Tag("UI")
+    @TmsLink("HOME-3")
     void verifyAmountOfEntites(String type, Integer amount) {
         openWebsite().openAboutPage().verifyAmountOfObjects(type, amount);
     }
