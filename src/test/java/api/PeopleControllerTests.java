@@ -3,6 +3,7 @@ package api;
 import api.controllers.PeopleController;
 import api.models.Person;
 import extensions.execution.condition.TypeExecutionDefinitionExtension;
+import extensions.parameter.resolver.ParameterResolverExtension;
 import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.junit.jupiter.api.DisplayName;
@@ -19,7 +20,7 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 //@ExtendWith(TypeExecutionDefinitionExtension.class)
-//@ExtendWith(ParameterResolver.class)
+@ExtendWith(ParameterResolverExtension.class)
 public class PeopleControllerTests extends BaseAPITest {
 
     @Test

@@ -50,7 +50,7 @@ public class TestLogController implements AfterEachCallback {
         }
 
         if (testMethod.isAnnotationPresent(TmsLink.class)) {
-            type = testMethod.getAnnotation(TmsLink.class).value();
+            tmsLink = testMethod.getAnnotation(TmsLink.class).value();
         } else {
             log.warn("Link to caseId was not provided.'");
         }

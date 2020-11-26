@@ -5,6 +5,8 @@ import org.junit.jupiter.api.extension.ConditionEvaluationResult;
 import org.junit.jupiter.api.extension.ExecutionCondition;
 import org.junit.jupiter.api.extension.ExtensionContext;
 
+import java.util.Objects;
+
 /**
  * Let's imagine there some tests that can be executed only on one of environments.
  * Possible reason - some code is not yet implemented on another env so that it will fail.
